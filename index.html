@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PFO2 - Portada de Acceso</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col justify-between">
+
+    <main class="container mx-auto px-4 py-12 max-w-4xl flex-grow flex flex-col justify-center">
+        
+        <div class="text-center mb-12">
+            <span class="px-3 py-1 text-xs font-semibold uppercase tracking-wider text-indigo-400 bg-indigo-500/10 rounded-full border border-indigo-500/20">
+                Práctica Formativa Obligatoria 2
+            </span>
+	           <h1 class="text-4xl md:text-5xl font-bold mt-4 mb-3 bg-gradient-to-r text-transparent bg-clip-text from-indigo-400 via-sky-400 to-emerald-400 pb-2 leading-normal">
+	                Prompt Engineering en Agentes de IA
+	            </h1>
+            <p class="text-slate-400 text-lg max-w-2xl mx-auto">
+                Interfaz de acceso unificada para la comparación y evaluación autónoma de agentes de desarrollo de software.
+            </p>
+        </div>
+
+        <div class="bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 mb-10 backdrop-blur-sm shadow-xl">
+            <div class="flex items-center gap-4">
+                <div class="p-3 bg-indigo-600/20 text-indigo-400 rounded-xl">
+                    <i class="fa-solid fa-user-gradient text-xl"></i>
+                </div>
+                <div>
+                    <h2 class="text-sm font-semibold tracking-wider uppercase text-slate-400">Datos del Estudiante</h2>
+                    <p class="text-lg font-bold text-slate-200"> Iván Ariel Faigenbom </p>
+                    Desarrollo de Sistemas Web (Front End) - 2° D (Lunes)
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <a href="prompt.txt" target="_blank" class="group flex flex-col justify-between bg-slate-800 border border-slate-700 hover:border-indigo-500/50 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-indigo-500/10">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center mb-5 group-hover:bg-indigo-500 group-hover:text-white transition-colors duration-300">
+                        <i class="fa-solid fa-terminal text-lg"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-100 mb-2">Prompt Utilizado</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Texto plano con la instrucción inicial detallada, restricciones y especificaciones técnicas optimizadas.
+                    </p>
+                </div>
+                <div class="mt-6 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-indigo-400 group-hover:text-indigo-300">
+                    <span>Ver prompt</span>
+                    <i class="fa-solid fa-arrow-right transition-transform duration-300 group-hover:translate-x-1"></i>
+                </div>
+            </a>
+
+	           <a href="cursor/landing1Cursor.html" class="group flex flex-col justify-between bg-slate-800 border border-slate-700 hover:border-sky-500/50 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-sky-500/10">
+	                <div>
+	                    <div class="w-12 h-12 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center mb-5 group-hover:bg-sky-500 group-hover:text-white transition-colors duration-300">
+	                        <i class="fa-solid fa-wand-magic-sparkles text-lg"></i>
+	                    </div>
+	                    <h3 class="text-xl font-bold text-slate-100 mb-2">Agente 1: Cursor</h3>
+	                    <p class="text-slate-400 text-sm leading-relaxed">
+	                        Landing Page generada de forma 100% autónoma. Evaluado usando <span class="text-sky-400 font-medium">Cursor Composer (Model: 2.5 Fast)</span>.
+	                    </p>
+	                </div>
+	                <div class="mt-6 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-sky-400 group-hover:text-sky-300">
+	                    <span>Abrir Landing</span>
+	                    <i class="fa-solid fa-arrow-right transition-transform duration-300 group-hover:translate-x-1"></i>
+	                </div>
+	            </a>
+
+            <a href="copilot/landing2Copilot.html" class="group flex flex-col justify-between bg-slate-800 border border-slate-700 hover:border-emerald-500/50 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-emerald-500/10">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-5 group-hover:bg-emerald-500 group-hover:text-white transition-colors duration-300">
+                        <i class="fa-solid fa-code-branch text-lg"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-100 mb-2">Agente 2: Copilot</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Landing Page generada directamente en el editor. Evaluado bajo el modelo de lenguaje de programación <span class="text-emerald-400 font-medium"> GPT-4o</span>.
+                    </p>
+                </div>
+                <div class="mt-6 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-emerald-400 group-hover:text-emerald-300">
+                    <span>Abrir Landing</span>
+                    <i class="fa-solid fa-arrow-right transition-transform duration-300 group-hover:translate-x-1"></i>
+                </div>
+            </a>
+
+        </div>
+
+    </main>
+
+    <footer class="w-full text-center py-6 border-t border-slate-800 text-xs text-slate-500">
+        <p>&copy; 2026 - Universidad / Comisión Lunes-Viernes. Despliegue Unificado en Vercel.</p>
+    </footer>
+
+</body>
+</html>

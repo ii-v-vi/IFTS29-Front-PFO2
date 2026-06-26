@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="VitaFlow — Centro de bienestar integral. Entrenamiento personal, nutrición y mindfulness para transformar tu vida.">
+  <title>VitaFlow | Bienestar Integral y Entrenamiento Personal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              200: '#a7f3d0',
+              300: '#6ee7b7',
+              400: '#34d399',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+              800: '#065f46',
+              900: '#064e3b',
+            },
+            accent: {
+              400: '#fbbf24',
+              500: '#f59e0b',
+              600: '#d97706',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    .hero-pattern {
+      background-color: #064e3b;
+      background-image:
+        radial-gradient(circle at 20% 80%, rgba(16, 185, 129, 0.35) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(251, 191, 36, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(52, 211, 153, 0.1) 0%, transparent 60%);
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px -12px rgba(6, 78, 59, 0.25);
+    }
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+    }
+    .nav-link::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 2px;
+      background: #10b981;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    #mobile-menu {
+      transition: max-height 0.35s ease, opacity 0.35s ease;
+    }
+    #mobile-menu.closed {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+    }
+    #mobile-menu.open {
+      max-height: 400px;
+      opacity: 1;
+    }
+    .star-filled {
+      color: #fbbf24;
+    }
+    .form-input:focus {
+      outline: none;
+      border-color: #10b981;
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+    }
+    .cta-pulse {
+      animation: pulse-glow 2.5s ease-in-out infinite;
+    }
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+      50% { box-shadow: 0 0 0 12px rgba(16, 185, 129, 0); }
+    }
+    .floating-badge {
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+  </style>
+</head>
+<body class="font-sans text-gray-800 antialiased">
+
+  <!-- HEADER -->
+  <header id="inicio" class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-sm">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 md:h-20">
+        <a href="#inicio" class="flex items-center gap-2 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center shadow-lg group-hover:shadow-brand-500/30 transition-shadow">
+            <i class="fas fa-leaf text-white text-lg"></i>
+          </div>
+          <span class="font-display font-bold text-xl text-brand-900 tracking-tight">Vita<span class="text-brand-500">Flow</span></span>
+        </a>
+
+        <ul class="hidden md:flex items-center gap-8">
+          <li><a href="#inicio" class="nav-link text-sm font-medium text-gray-700 hover:text-brand-600 transition-colors">Inicio</a></li>
+          <li><a href="#sobre-nosotros" class="nav-link text-sm font-medium text-gray-700 hover:text-brand-600 transition-colors">Sobre Nosotros</a></li>
+          <li><a href="#servicios" class="nav-link text-sm font-medium text-gray-700 hover:text-brand-600 transition-colors">Servicios</a></li>
+          <li><a href="#testimonios" class="nav-link text-sm font-medium text-gray-700 hover:text-brand-600 transition-colors">Testimonios</a></li>
+          <li><a href="#contacto" class="inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-all hover:shadow-lg hover:shadow-brand-500/25">Contacto</a></li>
+        </ul>
+
+        <button id="menu-toggle" type="button" class="md:hidden w-10 h-10 flex items-center justify-center rounded-lg text-brand-800 hover:bg-brand-50 transition-colors" aria-label="Abrir menú de navegación" aria-expanded="false">
+          <i id="menu-icon-open" class="fas fa-bars text-xl"></i>
+          <i id="menu-icon-close" class="fas fa-times text-xl hidden"></i>
+        </button>
+      </div>
+
+      <div id="mobile-menu" class="closed md:hidden pb-4">
+        <ul class="flex flex-col gap-1 pt-2 border-t border-gray-100">
+          <li><a href="#inicio" class="mobile-nav-link block px-4 py-3 text-base font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-700 rounded-lg transition-colors">Inicio</a></li>
+          <li><a href="#sobre-nosotros" class="mobile-nav-link block px-4 py-3 text-base font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-700 rounded-lg transition-colors">Sobre Nosotros</a></li>
+          <li><a href="#servicios" class="mobile-nav-link block px-4 py-3 text-base font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-700 rounded-lg transition-colors">Servicios</a></li>
+          <li><a href="#testimonios" class="mobile-nav-link block px-4 py-3 text-base font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-700 rounded-lg transition-colors">Testimonios</a></li>
+          <li><a href="#contacto" class="mobile-nav-link block px-4 py-3 text-base font-semibold text-white bg-brand-600 hover:bg-brand-700 rounded-lg text-center transition-colors mt-2">Contacto</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero-pattern relative min-h-screen flex items-center pt-20 overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-20 left-10 w-72 h-72 bg-brand-400 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-20 right-10 w-96 h-96 bg-accent-400 rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 w-full">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div class="text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 bg-white/10 text-brand-200 text-sm font-medium px-4 py-2 rounded-full mb-6 border border-white/10">
+            <i class="fas fa-star text-accent-400"></i>
+            Más de 2.500 vidas transformadas
+          </div>
+          <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight tracking-tight mb-6">
+            Recupera tu energía.<br>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-300 to-accent-400">Transforma tu vida.</span>
+          </h1>
+          <p class="text-lg sm:text-xl text-brand-100/90 leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0">
+            En VitaFlow combinamos entrenamiento personalizado, nutrición inteligente y mindfulness para que alcances tu mejor versión — sin dietas extremas ni rutinas imposibles.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <a href="#contacto" class="cta-pulse inline-flex items-center justify-center gap-2 bg-accent-500 hover:bg-accent-600 text-brand-900 font-bold text-lg px-8 py-4 rounded-full transition-all hover:scale-105">
+              <i class="fas fa-bolt"></i>
+              Reserva tu sesión gratuita
+            </a>
+            <a href="#servicios" class="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white font-semibold text-lg px-8 py-4 rounded-full border border-white/20 transition-all">
+              <i class="fas fa-play-circle"></i>
+              Descubre nuestros programas
+            </a>
+          </div>
+          <div class="flex items-center justify-center lg:justify-start gap-6 mt-10 text-brand-200 text-sm">
+            <div class="flex items-center gap-2">
+              <i class="fas fa-check-circle text-brand-400"></i>
+              Sin compromiso
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fas fa-check-circle text-brand-400"></i>
+              Resultados en 30 días
+            </div>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="relative rounded-3xl overflow-hidden shadow-2xl shadow-black/30 ring-1 ring-white/10">
+            <img
+              src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&h=900&fit=crop&crop=faces,center"
+              alt="Persona entrenando en un gimnasio moderno con energía y determinación"
+              class="w-full h-[420px] sm:h-[500px] lg:h-[560px] object-cover"
+              loading="eager"
+            >
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-900/60 via-transparent to-transparent"></div>
+          </div>
+
+          <div class="floating-badge absolute -bottom-4 -left-4 sm:-left-8 glass-card rounded-2xl px-5 py-4 shadow-xl">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 rounded-full bg-brand-500 flex items-center justify-center">
+                <i class="fas fa-heart-pulse text-white text-lg"></i>
+              </div>
+              <div>
+                <p class="text-white font-bold text-2xl leading-none">98%</p>
+                <p class="text-brand-200 text-xs mt-1">Satisfacción clientes</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="floating-badge absolute -top-2 -right-2 sm:-right-6 bg-white rounded-2xl px-4 py-3 shadow-xl" style="animation-delay: 1s;">
+            <div class="flex items-center gap-2">
+              <div class="flex -space-x-2">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face" alt="" class="w-8 h-8 rounded-full border-2 border-white object-cover">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" alt="" class="w-8 h-8 rounded-full border-2 border-white object-cover">
+                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face" alt="" class="w-8 h-8 rounded-full border-2 border-white object-cover">
+              </div>
+              <p class="text-gray-700 text-xs font-semibold">+120 esta semana</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce hidden sm:block">
+      <a href="#sobre-nosotros" class="text-brand-300 hover:text-white transition-colors" aria-label="Desplazarse hacia abajo">
+        <i class="fas fa-chevron-down text-2xl"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- ABOUT US -->
+  <section id="sobre-nosotros" class="py-20 lg:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div class="relative order-2 lg:order-1">
+          <div class="grid grid-cols-2 gap-4">
+            <img
+              src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=500&fit=crop"
+              alt="Sesión de yoga y mindfulness en grupo"
+              class="rounded-2xl w-full h-48 sm:h-64 object-cover shadow-lg"
+              loading="lazy"
+            >
+            <img
+              src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&h=500&fit=crop"
+              alt="Alimentación saludable y equilibrada"
+              class="rounded-2xl w-full h-48 sm:h-64 object-cover shadow-lg mt-8"
+              loading="lazy"
+            >
+          </div>
+          <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-brand-600 text-white rounded-2xl px-8 py-5 shadow-xl text-center">
+            <p class="font-display font-bold text-3xl">8+</p>
+            <p class="text-brand-100 text-sm font-medium">Años de experiencia</p>
+          </div>
+        </div>
+
+        <div class="order-1 lg:order-2">
+          <span class="inline-block text-brand-600 font-semibold text-sm uppercase tracking-wider mb-3">Sobre Nosotros</span>
+          <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-6">
+            Tu bienestar es nuestra misión
+          </h2>
+          <p class="text-gray-600 text-lg leading-relaxed mb-6">
+            VitaFlow nació en Madrid con una convicción clara: el bienestar no debería ser un lujo reservado para unos pocos. Somos un equipo de entrenadores certificados, nutricionistas y coaches de mindfulness unidos por un mismo propósito — acompañarte hacia una vida más plena, saludable y con propósito.
+          </p>
+          <p class="text-gray-600 text-lg leading-relaxed mb-8">
+            Creemos en un enfoque holístico que respeta tu ritmo, tus objetivos y tu estilo de vida. No vendemos promesas vacías: diseñamos planes personalizados respaldados por ciencia y acompañamiento humano real, para que cada pequeño avance se convierta en un cambio duradero.
+          </p>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="flex items-start gap-3 p-4 rounded-xl bg-brand-50 border border-brand-100">
+              <div class="w-10 h-10 rounded-lg bg-brand-500 flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-user-check text-white"></i>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-900 mb-1">Atención personalizada</h3>
+                <p class="text-gray-600 text-sm">Cada plan se adapta a ti, no al revés.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-4 rounded-xl bg-brand-50 border border-brand-100">
+              <div class="w-10 h-10 rounded-lg bg-brand-500 flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-flask text-white"></i>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-900 mb-1">Basado en evidencia</h3>
+                <p class="text-gray-600 text-sm">Metodologías respaldadas por la ciencia.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="servicios" class="py-20 lg:py-28 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="inline-block text-brand-600 font-semibold text-sm uppercase tracking-wider mb-3">Servicios</span>
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-6">
+          Todo lo que necesitas para transformarte
+        </h2>
+        <p class="text-gray-600 text-lg leading-relaxed">
+          Programas diseñados para cubrir cada aspecto de tu bienestar. Elige el camino que mejor se adapte a tus metas — o combínalos para resultados extraordinarios.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        <div class="service-card bg-white rounded-2xl p-8 shadow-sm border border-gray-100 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-brand-400 to-brand-600 flex items-center justify-center mb-6 shadow-lg shadow-brand-500/20">
+            <i class="fas fa-dumbbell text-white text-xl"></i>
+          </div>
+          <h3 class="font-display font-bold text-xl text-gray-900 mb-3">Entrenamiento Personal</h3>
+          <p class="text-gray-600 leading-relaxed mb-5">
+            Sesiones one-to-one con entrenadores certificados. Rutinas adaptadas a tu nivel, objetivos y disponibilidad, con seguimiento semanal de progreso.
+          </p>
+          <a href="#contacto" class="inline-flex items-center gap-2 text-brand-600 font-semibold text-sm hover:text-brand-700 transition-colors">
+            Más información <i class="fas fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+
+        <div class="service-card bg-white rounded-2xl p-8 shadow-sm border border-gray-100 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-accent-400 to-accent-600 flex items-center justify-center mb-6 shadow-lg shadow-accent-500/20">
+            <i class="fas fa-apple-whole text-white text-xl"></i>
+          </div>
+          <h3 class="font-display font-bold text-xl text-gray-900 mb-3">Nutrición Inteligente</h3>
+          <p class="text-gray-600 leading-relaxed mb-5">
+            Planes alimenticios flexibles y deliciosos. Aprende a comer mejor sin renunciar al placer, con el acompañamiento de nutricionistas colegiados.
+          </p>
+          <a href="#contacto" class="inline-flex items-center gap-2 text-brand-600 font-semibold text-sm hover:text-brand-700 transition-colors">
+            Más información <i class="fas fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+
+        <div class="service-card bg-white rounded-2xl p-8 shadow-sm border border-gray-100 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center mb-6 shadow-lg shadow-purple-500/20">
+            <i class="fas fa-spa text-white text-xl"></i>
+          </div>
+          <h3 class="font-display font-bold text-xl text-gray-900 mb-3">Mindfulness & Recuperación</h3>
+          <p class="text-gray-600 leading-relaxed mb-5">
+            Reduce el estrés, mejora tu sueño y acelera la recuperación muscular con sesiones de meditación guiada, yoga y técnicas de respiración.
+          </p>
+          <a href="#contacto" class="inline-flex items-center gap-2 text-brand-600 font-semibold text-sm hover:text-brand-700 transition-colors">
+            Más información <i class="fas fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+
+        <div class="service-card bg-white rounded-2xl p-8 shadow-sm border border-gray-100 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-rose-400 to-rose-600 flex items-center justify-center mb-6 shadow-lg shadow-rose-500/20">
+            <i class="fas fa-users text-white text-xl"></i>
+          </div>
+          <h3 class="font-display font-bold text-xl text-gray-900 mb-3">Programas Grupales</h3>
+          <p class="text-gray-600 leading-relaxed mb-5">
+            Entrena en comunidad con clases de alta energía: HIIT, funcional, pilates y más. Motivación colectiva con la calidad VitaFlow.
+          </p>
+          <a href="#contacto" class="inline-flex items-center gap-2 text-brand-600 font-semibold text-sm hover:text-brand-700 transition-colors">
+            Más información <i class="fas fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-16 text-center">
+        <div class="inline-flex flex-col sm:flex-row items-center gap-4 bg-brand-900 rounded-2xl px-8 py-6 sm:px-12">
+          <p class="text-brand-100 text-lg font-medium">¿No sabes por dónde empezar?</p>
+          <a href="#contacto" class="inline-flex items-center gap-2 bg-white text-brand-800 font-bold px-6 py-3 rounded-full hover:bg-brand-50 transition-colors">
+            <i class="fas fa-calendar-check"></i>
+            Agenda una consulta gratuita
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonios" class="py-20 lg:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="inline-block text-brand-600 font-semibold text-sm uppercase tracking-wider mb-3">Testimonios</span>
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-6">
+          Lo que dicen nuestros clientes
+        </h2>
+        <p class="text-gray-600 text-lg leading-relaxed">
+          Historias reales de personas que decidieron invertir en su bienestar y nunca miraron atrás.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="testimonial-card bg-gray-50 rounded-2xl p-8 border border-gray-100 transition-all duration-300">
+          <div class="flex items-center gap-1 mb-4">
+            <i class="fas fa-star star-filled"></i>
+            <i class="fas fa-star star-filled"></i>
+            <i class="fas fa-star star-filled"></i>
+            <i class="fas fa-star star-filled"></i>
+            <i class="fas fa-star star-filled"></i>
+          </div>
+          <blockquote class="text-gray-700 leading-relaxed mb-6">
+            "Llevaba años intentando bajar de peso sin éxito. En VitaFlow encontré un equipo que realmente me escuchó. En seis meses perdí 14 kilos, pero lo más importante es que recuperé la confianza en mí misma. El enfoque integral marca la diferencia."
+          </blockquote>
+          <div class="flex items-center gap-4">
+            <img
+              src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop&crop=face"
+              alt="Foto de Laura Méndez"
+              class="w-14 h-14 rounded-full object-cover ring-2 ring-brand-200"
+              loading="lazy"
+            >
+            <div>
+              <p class="font-semibold text-gray-900">Laura Méndez</p>
+              <p class="text-gray-500 text-sm">Directora de Marketing, Barcelona</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card bg-gray-50 rounded-2xl p-8 border border-gray-100 transition-all duration-300">
+          <div class="flex items-center gap-1 mb-4">
+            <i class="fas fa-star star-filled"></i>
+            <i class="fas fa-star star-filled"></i>
+            <i class="fas fa-star star-filled"></i>
+            <i class="fas fa-star star-filled"></i>
+            <i class="fas fa-star star-filled"></i>
+          </div>
+          <blockquote class="text-gray-700 leading-relaxed mb-6">
+            "Como empresario, el estrés era mi enemigo silencioso. Las sesiones de mindfulness y el entrenamiento funcional me devolvieron la energía que creía haber perdido para siempre. Mi productividad y mi salud mejoraron en paralelo."
+          </blockquote>
+          <div class="flex items-center gap-4">
+            <img
+              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face"
+              alt="Foto de Carlos Ruiz"
+              class="w-14 h-14 rounded-full object-cover ring-2 ring-brand-200"
+              loading="lazy"
+            >
+            <div>
+              <p class="font-semibold text-gray-900">Carlos Ruiz</p>
+              <p class="text-gray-500 text-sm">CEO, TechStart Madrid</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card bg-gray-50 rounded-2xl p-8 border border-gray-100 transition-all duration-300">
+          <div class="flex items-center gap-1 mb-4">
+            <i class="fas fa-star star-filled"></i>
+            <i class="fas fa-star star-filled"></i>
+            <i class="fas fa-star star-filled"></i>
+            <i class="fas fa-star star-filled"></i>
+            <i class="fas fa-star star-filled"></i>
+          </div>
+          <blockquote class="text-gray-700 leading-relaxed mb-6">
+            "Después de mi segundo embarazo, no sabía cómo retomar el ejercicio de forma segura. El equipo de VitaFlow diseñó un plan progresivo y comprensivo. Hoy me siento más fuerte que nunca y he encontrado una comunidad increíble."
+          </blockquote>
+          <div class="flex items-center gap-4">
+            <img
+              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop&crop=face"
+              alt="Foto de Elena Vargas"
+              class="w-14 h-14 rounded-full object-cover ring-2 ring-brand-200"
+              loading="lazy"
+            >
+            <div>
+              <p class="font-semibold text-gray-900">Elena Vargas</p>
+              <p class="text-gray-500 text-sm">Profesora universitaria, Valencia</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT FORM -->
+  <section id="contacto" class="py-20 lg:py-28 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20">
+        <div>
+          <span class="inline-block text-brand-600 font-semibold text-sm uppercase tracking-wider mb-3">Contacto</span>
+          <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-6">
+            Da el primer paso hoy
+          </h2>
+          <p class="text-gray-600 text-lg leading-relaxed mb-8">
+            Completa el formulario y un miembro de nuestro equipo se pondrá en contacto contigo en menos de 24 horas para agendar tu sesión de valoración gratuita.
+          </p>
+
+          <div class="space-y-5">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-xl bg-brand-100 flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-location-dot text-brand-600"></i>
+              </div>
+              <div>
+                <p class="font-semibold text-gray-900">Ubicación</p>
+                <p class="text-gray-600">Calle del Bienestar 42, 28001 Madrid</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-xl bg-brand-100 flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-phone text-brand-600"></i>
+              </div>
+              <div>
+                <p class="font-semibold text-gray-900">Teléfono</p>
+                <p class="text-gray-600">+34 910 000 000</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-xl bg-brand-100 flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-envelope text-brand-600"></i>
+              </div>
+              <div>
+                <p class="font-semibold text-gray-900">Email</p>
+                <p class="text-gray-600">hola@vitaflow.es</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-xl bg-brand-100 flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-clock text-brand-600"></i>
+              </div>
+              <div>
+                <p class="font-semibold text-gray-900">Horario</p>
+                <p class="text-gray-600">Lun – Vie: 7:00 – 21:00 | Sáb: 9:00 – 14:00</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-xl shadow-gray-200/50 p-8 sm:p-10 border border-gray-100">
+          <form id="contact-form" action="#" method="POST" class="space-y-6">
+            <div>
+              <label for="nombre" class="block text-sm font-semibold text-gray-700 mb-2">Nombre completo</label>
+              <div class="relative">
+                <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                  <i class="fas fa-user"></i>
+                </span>
+                <input
+                  type="text"
+                  id="nombre"
+                  name="nombre"
+                  required
+                  placeholder="Tu nombre y apellidos"
+                  class="form-input w-full pl-11 pr-4 py-3.5 rounded-xl border border-gray-200 text-gray-800 placeholder-gray-400 transition-all"
+                >
+              </div>
+            </div>
+
+            <div>
+              <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Correo electrónico</label>
+              <div class="relative">
+                <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                  <i class="fas fa-envelope"></i>
+                </span>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  placeholder="tu@email.com"
+                  class="form-input w-full pl-11 pr-4 py-3.5 rounded-xl border border-gray-200 text-gray-800 placeholder-gray-400 transition-all"
+                >
+              </div>
+            </div>
+
+            <div>
+              <label for="mensaje" class="block text-sm font-semibold text-gray-700 mb-2">Mensaje</label>
+              <div class="relative">
+                <span class="absolute left-4 top-4 text-gray-400">
+                  <i class="fas fa-message"></i>
+                </span>
+                <textarea
+                  id="mensaje"
+                  name="mensaje"
+                  required
+                  rows="5"
+                  placeholder="Cuéntanos tus objetivos y cómo podemos ayudarte..."
+                  class="form-input w-full pl-11 pr-4 py-3.5 rounded-xl border border-gray-200 text-gray-800 placeholder-gray-400 transition-all resize-none"
+                ></textarea>
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              class="w-full inline-flex items-center justify-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-bold text-lg px-8 py-4 rounded-xl transition-all hover:shadow-lg hover:shadow-brand-500/25"
+            >
+              <i class="fas fa-paper-plane"></i>
+              Enviar mensaje
+            </button>
+
+            <p class="text-gray-500 text-xs text-center leading-relaxed">
+              Al enviar este formulario, aceptas nuestra <a href="#" class="text-brand-600 hover:underline">política de privacidad</a>. Tus datos están protegidos y nunca serán compartidos con terceros.
+            </p>
+          </form>
+
+          <div id="form-success" class="hidden text-center py-8">
+            <div class="w-16 h-16 rounded-full bg-brand-100 flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-check text-brand-600 text-2xl"></i>
+            </div>
+            <h3 class="font-display font-bold text-xl text-gray-900 mb-2">¡Mensaje enviado!</h3>
+            <p class="text-gray-600">Gracias por contactarnos. Te responderemos muy pronto.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-brand-900 text-brand-100 pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <div class="sm:col-span-2 lg:col-span-1">
+          <a href="#inicio" class="flex items-center gap-2 mb-4">
+            <div class="w-10 h-10 rounded-xl bg-brand-500 flex items-center justify-center">
+              <i class="fas fa-leaf text-white text-lg"></i>
+            </div>
+            <span class="font-display font-bold text-xl text-white tracking-tight">Vita<span class="text-brand-300">Flow</span></span>
+          </a>
+          <p class="text-brand-300 text-sm leading-relaxed mb-6">
+            Centro de bienestar integral en Madrid. Transformamos vidas a través del movimiento consciente, la nutrición y el equilibrio mental.
+          </p>
+          <div class="flex items-center gap-3">
+            <a href="#" class="w-10 h-10 rounded-full bg-brand-800 hover:bg-brand-600 flex items-center justify-center text-brand-200 hover:text-white transition-all" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-brand-800 hover:bg-brand-600 flex items-center justify-center text-brand-200 hover:text-white transition-all" aria-label="X (Twitter)">
+              <i class="fab fa-x-twitter"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-brand-800 hover:bg-brand-600 flex items-center justify-center text-brand-200 hover:text-white transition-all" aria-label="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="font-semibold text-white mb-4">Enlaces rápidos</h4>
+          <ul class="space-y-3 text-sm">
+            <li><a href="#inicio" class="text-brand-300 hover:text-white transition-colors">Inicio</a></li>
+            <li><a href="#sobre-nosotros" class="text-brand-300 hover:text-white transition-colors">Sobre Nosotros</a></li>
+            <li><a href="#servicios" class="text-brand-300 hover:text-white transition-colors">Servicios</a></li>
+            <li><a href="#testimonios" class="text-brand-300 hover:text-white transition-colors">Testimonios</a></li>
+            <li><a href="#contacto" class="text-brand-300 hover:text-white transition-colors">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-semibold text-white mb-4">Legal</h4>
+          <ul class="space-y-3 text-sm">
+            <li><a href="#" class="text-brand-300 hover:text-white transition-colors">Aviso Legal</a></li>
+            <li><a href="#" class="text-brand-300 hover:text-white transition-colors">Política de Privacidad</a></li>
+            <li><a href="#" class="text-brand-300 hover:text-white transition-colors">Política de Cookies</a></li>
+            <li><a href="#" class="text-brand-300 hover:text-white transition-colors">Términos y Condiciones</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-semibold text-white mb-4">Newsletter</h4>
+          <p class="text-brand-300 text-sm mb-4">Recibe consejos de bienestar y ofertas exclusivas.</p>
+          <div class="flex gap-2">
+            <input type="email" placeholder="Tu email" class="flex-1 px-4 py-2.5 rounded-lg bg-brand-800 border border-brand-700 text-white placeholder-brand-400 text-sm focus:outline-none focus:border-brand-500">
+            <button type="button" class="px-4 py-2.5 bg-brand-500 hover:bg-brand-400 text-white rounded-lg transition-colors" aria-label="Suscribirse">
+              <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-brand-800 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-brand-400 text-sm text-center sm:text-left">
+          &copy; 2026 VitaFlow Wellness S.L. Todos los derechos reservados.
+        </p>
+        <p class="text-brand-500 text-xs">
+          Hecho con <i class="fas fa-heart text-rose-400"></i> en Madrid
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const menuToggle = document.getElementById('menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const iconOpen = document.getElementById('menu-icon-open');
+      const iconClose = document.getElementById('menu-icon-close');
+      const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+      let isOpen = false;
+
+      function toggleMenu() {
+        isOpen = !isOpen;
+        mobileMenu.classList.toggle('closed', !isOpen);
+        mobileMenu.classList.toggle('open', isOpen);
+        iconOpen.classList.toggle('hidden', isOpen);
+        iconClose.classList.toggle('hidden', !isOpen);
+        menuToggle.setAttribute('aria-expanded', String(isOpen));
+      }
+
+      menuToggle.addEventListener('click', toggleMenu);
+
+      mobileNavLinks.forEach(function (link) {
+        link.addEventListener('click', function () {
+          if (isOpen) toggleMenu();
+        });
+      });
+
+      window.addEventListener('resize', function () {
+        if (window.innerWidth >= 768 && isOpen) {
+          toggleMenu();
+        }
+      });
+
+      const contactForm = document.getElementById('contact-form');
+      const formSuccess = document.getElementById('form-success');
+
+      contactForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        contactForm.classList.add('hidden');
+        formSuccess.classList.remove('hidden');
+      });
+
+      const header = document.querySelector('header');
+      window.addEventListener('scroll', function () {
+        if (window.scrollY > 50) {
+          header.classList.add('shadow-md');
+        } else {
+          header.classList.remove('shadow-md');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
