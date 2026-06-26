@@ -6,7 +6,7 @@
 - **Fecha de Entrega:** 26/06/2026
 
 ## Deploy Unificado
-- **Link de Vercel:** 
+- **Link de Vercel:** https://ifts-29-front-pfo-2.vercel.app/
 
 ---
 
