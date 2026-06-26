@@ -48,10 +48,14 @@ OUTPUT: Return ONLY the complete, raw HTML code block. No explanations, no intro
 				 completamente digno de un entorno de producción real.
 - **Captura de Pantalla:** ![Landing Cursor](./cursor/screenshot-cursor.png)
 
-### Agente 2: GitHub Copilot Chat
+### Agente 2: GitHub Copilot - VsCode
 - **Modelo:** GPT-4o (Default Model).
 - **Resultado:** La propuesta de Impulso Digital destaca por un enfoque tecnológico y corporativo muy pulido, utilizando una estética dark mode impecable sobre tonos pizarra con acentos en cian y 
 				 ámbar que estructuran la lectura a la perfección. A nivel técnico, el código es directo y ordenado, resolviendo la interactividad mediante un script nativo simple para el menú móvil e 
 				 implementando grillas responsivas sumamente robustas en todas sus secciones. 
 				 Aunque arriesga menos en lo visual en comparación con VitaFlow, logra una interfaz sofisticada, equilibrada y orientada de forma sumamente efectiva a la conversión.
 - **Captura de Pantalla:** ![Landing Copilot](./copilot/screenshot-copilot.png)
+
+
+### Aclaración final sobre el Trabajo
+El prompt se realizó utilizando a la IA como guía en su creación, siguiendo los lineamientos detallados por el profesor en la consigna y los links a las guías de Anthropic y OpenAI. Es de público conocimiento la eficiencia en tokens que supone escribir prompt en inglés con respecto al español y otros idiomas. Por lo que una vez diseñado el prompt en español se procedió a traducirlo al inglés para realizar la prueba de los agentes.
